@@ -12,5 +12,22 @@ function getComputerChoice(){
     } else {
         return "scissors";
     };
-    
+
 }
+
+function playRound(playerSelection, computerSelection){
+    // return a string that declares the winner e.g. "You Lose! Paper beats rock."
+    // not case sensitive
+    // account for tie by replaying
+
+    playerSelection = playerSelection.toLowerCase();
+
+    if (playerSelection == "rock" && computerSelection == "paper") {
+        return "You lose! Paper beats rock.";
+    };
+
+}
+
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
