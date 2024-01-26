@@ -13,7 +13,7 @@ function getComputerChoice(){
         return "scissors";
     };
 
-}
+};
 
 function playRound(playerSelection, computerSelection){
     // return a string that declares the winner e.g. "You Lose! Paper beats rock."
@@ -38,7 +38,7 @@ function playRound(playerSelection, computerSelection){
         return playRound(playerSelection, getComputerChoice());
     }
 
-}
+};
 
 function score(result, scores){
     if (result.startsWith("You win!")) {
@@ -46,7 +46,15 @@ function score(result, scores){
     } else if (result.startsWith("You lose!")) {
         return scores.computer++;
     }
-}
+};
+
+function winner(scores){
+    if (scores.player > scores.computer) {
+        console.log("You won! You beat the computer.");
+    } else {
+        console.log("You lost! Try again next time.");
+    };
+};
 
 function game(){
     // keep track of scores
@@ -63,6 +71,8 @@ function game(){
         console.log(scores);
     }
 
-}
+    winner(scores);
+
+};
 
 game();
