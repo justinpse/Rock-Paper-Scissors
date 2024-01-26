@@ -40,13 +40,29 @@ function playRound(playerSelection, computerSelection){
 
 }
 
+function score(result, scores){
+    if (result.startsWith("You win!")) {
+        return scores.player++;
+    } else if (result.startsWith("You lose!")) {
+        return scores.computer++;
+    }
+}
+
 function game(){
+    // keep track of scores
+    let scores = {player: 0, computer: 0};
+
     // loop five times to play best-of-five game
-    
+
     for (let i = 0; i < 5; i++) {
         let playerSelection = prompt("Rock, paper, or scissors?");
         const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+        const result = (playRound(playerSelection, computerSelection));
+        score(result, scores);
+        console.log(result);
+        console.log(scores);
     }
 
 }
+
+game();
