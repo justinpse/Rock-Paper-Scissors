@@ -1,7 +1,5 @@
 function getComputerChoice(){
     // randomly return "rock" "paper" or "scissors"
-    // generate random number (0, 1, 2) with Math.floor(Math.random() * 3) then
-    // if random = 0 return rock, else if random = 1 return paper, else scissors
 
     const randomNumber = Math.floor(Math.random() * 3);
 
@@ -16,9 +14,6 @@ function getComputerChoice(){
 };
 
 function playRound(playerSelection, computerSelection){
-    // return a string that declares the winner e.g. "You Lose! Paper beats rock."
-    // not case sensitive
-    // account for tie by replaying
 
     playerSelection = playerSelection.toLowerCase();
 
@@ -57,7 +52,6 @@ function winner(scores){
 };
 
 function game(){
-    // keep track of scores
     let scores = {player: 0, computer: 0};
 
     // loop five times to play best-of-five game
