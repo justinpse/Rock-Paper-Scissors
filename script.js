@@ -1,5 +1,4 @@
 function getComputerChoice(){
-    // randomly return "rock" "paper" or "scissors"
 
     const randomNumber = Math.floor(Math.random() * 3);
 
