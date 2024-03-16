@@ -16,22 +16,25 @@ function getComputerChoice(){
 function playRound(playerSelection, computerSelection){
 
     playerSelection = playerSelection.toLowerCase();
+    let results;
 
     if (playerSelection == "rock" && computerSelection == "paper") {
-        return "You lose! Paper beats rock.";
+        results = ("You lose! Paper beats rock.");
     } else if (playerSelection == "paper" && computerSelection == "rock") {
-        return "You win! Paper beats rock.";
+        results = ("You win! Paper beats rock.");
     } else if (playerSelection == "paper" && computerSelection == "scissors") {
-        return "You lose! Scissors beats paper.";
+        results = ("You lose! Scissors beats paper.");
     } else if (playerSelection == "scissors" && computerSelection == "paper") {
-        return "You win! Scissors beats paper.";
+        results = ("You win! Scissors beats paper.");
     } else if (playerSelection == "scissors" && computerSelection == "rock") {
-        return "You lose! Rock beats scissors.";
+        results = ("You lose! Rock beats scissors.");
     } else if (playerSelection == "rock" && computerSelection == "scissors") {
-        return "You win! Rock beats scissors.";
+        results = ("You win! Rock beats scissors.");
     } else {
         return playRound(playerSelection, getComputerChoice());
-    }
+    };
+
+    document.getElementById('results').textContent = results;
 
 };
 
@@ -51,22 +54,12 @@ function winner(scores){
     };
 };
 
-function game(){
-    let scores = {player: 0, computer: 0};
+let buttons = document.querySelectorAll('.btn');
 
-    // loop five times to play best-of-five game
-
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Rock, paper, or scissors?");
-        const computerSelection = getComputerChoice();
-        const result = (playRound(playerSelection, computerSelection));
-        score(result, scores);
-        console.log(result);
-        console.log(scores);
-    }
-
-    winner(scores);
-
-};
-
-game();
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        let playerSelection = button.value;
+        let computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection);
+    });
+});
