@@ -55,11 +55,21 @@ function winner(scores){
 
 let buttons = document.querySelectorAll('.btn');
 let rounds = 0;
+let scores = {player: 0, computer: 0};
 
 function clickCount(event) {
     let playerSelection = event.target.value;
     let computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
+
+    let results = document.getElementById('results');
+    if (results.textContent.startsWith('You win')) {
+        scores.player++;
+    } else {
+        scores.computer++;
+    };
+
+    results.innerHTML += `<br> Player: ${scores.player} Computer: ${scores.computer}`;
 
     rounds++;
     if (rounds == 5) {
