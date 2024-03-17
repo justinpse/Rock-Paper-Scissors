@@ -54,11 +54,21 @@ function winner(scores){
 };
 
 let buttons = document.querySelectorAll('.btn');
+let rounds = 0;
+
+function clickCount(event) {
+    let playerSelection = event.target.value;
+    let computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+
+    rounds++;
+    if (rounds == 5) {
+        buttons.forEach(button => {
+            button.removeEventListener('click', clickCount);
+        });
+    };
+};
 
 buttons.forEach(button => {
-    button.addEventListener('click', () => {
-        let playerSelection = button.value;
-        let computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection);
-    });
+    button.addEventListener('click', clickCount);
 });
