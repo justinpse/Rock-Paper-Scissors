@@ -47,9 +47,9 @@ function score(result, scores){
 
 function winner(scores){
     if (scores.player > scores.computer) {
-        console.log("You won! You beat the computer.");
+        return `<br>You won! You beat the computer.`;
     } else {
-        console.log("You lost! Try again next time.");
+        return `<br>You lost! Try again next time.`;
     };
 };
 
@@ -76,6 +76,7 @@ function clickCount(event) {
         buttons.forEach(button => {
             button.removeEventListener('click', clickCount);
         });
+        results.innerHTML += winner(scores);
     };
 };
 
