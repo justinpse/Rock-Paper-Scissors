@@ -37,14 +37,6 @@ function playRound(playerSelection, computerSelection){
 
 };
 
-function score(result, scores){
-    if (result.startsWith("You win!")) {
-        return scores.player++;
-    } else if (result.startsWith("You lose!")) {
-        return scores.computer++;
-    }
-};
-
 function winner(scores){
     if (scores.player > scores.computer) {
         return `<br>You won! You beat the computer.`;
@@ -62,6 +54,7 @@ function clickCount(event) {
     let computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
 
+    //increment scores per win
     let results = document.getElementById('results');
     if (results.textContent.startsWith('You win')) {
         scores.player++;
